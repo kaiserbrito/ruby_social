@@ -32,6 +32,10 @@ gem 'devise'
 gem 'carrierwave', '~> 1.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+# Use act_as_votable to allow a model to like the posts
+gem 'acts_as_votable', '~> 0.11.1'
+# Use act_as_commentable to create a Comment model
+gem 'acts_as_commentable'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

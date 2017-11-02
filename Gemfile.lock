@@ -38,6 +38,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts_as_commentable (4.0.2)
+    acts_as_votable (0.11.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
@@ -210,6 +212,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_commentable
+  acts_as_votable (~> 0.11.1)
   bootstrap-sass (~> 3.3, >= 3.3.6)
   byebug
   capybara (~> 2.13)
@@ -235,4 +239,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.15.4
+   1.16.0
