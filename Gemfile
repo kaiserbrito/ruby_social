@@ -36,6 +36,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'acts_as_votable', '~> 0.11.1'
 # Use act_as_commentable to create a Comment model
 gem 'acts_as_commentable'
+# Use acts_as_follower to add Follow funcionality for models
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
