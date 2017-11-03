@@ -1,2 +1,19 @@
-<h1>Home#front</h1>
-<p>Find me in app/views/home/front.html.erb</p>
+<div class="row">
+  <div class="col-lg-6" id="newsfeed">
+    <h4><%= fa_icon 'newspaper-o' %>NewsFeed</h4>
+    <div id="activities">
+      <% if @activities.empty? %>
+        <div class="well">
+          <%= render('includes/no_resource', resources: 'Activities') %>
+        </div>
+        <% else %>
+          <%= render_activities(@activities, layout: '/includes/activity') %>
+      <% end %>
+    </div>
+    <%= render 'includes/paginate', resources: @activities %>
+  </div>
+  <div class="col-lg-6" id="intro">
+    <h1>Social Ruby</h1>
+    <p>You can seed the source code <a href="https://github.com/kaiserbrito/ruby_social"><%= fa_icon 'github' %>here<</a></p>
+  </div>
+</div>

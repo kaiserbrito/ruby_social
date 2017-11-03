@@ -1,12 +1,22 @@
-<%= form_to(@post) do |f| %>
-  <div class="form-group">
-    <%= f.label 'Update status' %><br>
-      <%= f.text_area :content, class: 'form-control', autofocus: true, placeholder: 'How are you?' %>
-      <%= f.file_field :attachment, class: 'form-control' %>
+<div class="row">
+  <div class="col-lg-3">
+    <%= render 'includes/user_info' %>
   </div>
-  <%= f.submit :post, class: 'btn btn-primary' %>
-<% end %>
-
-<div id="activities">
-  <%= render_activities(@activities) %>
+  <div id="newsfeed" class="col-lg-6">
+    <%= render 'posts/form' %>
+    <br>
+    <div id="activities">
+      <% if @activities.empty? %>
+        <div class="well">
+          <%= render ('includes/no_resource', resources: 'Activities') %>
+        </div>
+      <% else %>
+        <%= render_activities(@activities, layout: '/includes/activity') %>
+      <% end %>
+    </div>
+    <%= render 'includes/paginate', resources: '@activities' %>
+  </div>
+  <div class="col-lg-3">
+    <%= render 'includes/links' %>
+  </div>
 </div>
