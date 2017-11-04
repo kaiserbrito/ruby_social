@@ -1,5 +1,7 @@
 class Follow < ActiveRecord::Base
 
+  include Shared::Callbacks
+
   extend ActsAsFollower::FollowerLib
   extend ActsAsFollower::FollowScopes
 
@@ -11,7 +13,7 @@ class Follow < ActiveRecord::Base
     self.update_attribute(:blocked, true)
   end
 
-  interface PublicActivity::Model
+  include PublicActivity::Model
   tracked only: [:create], owner: Proc.new{ |controller, model| model.follower }
 
   validates_presence_of :follower
