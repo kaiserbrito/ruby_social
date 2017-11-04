@@ -4,8 +4,8 @@
   before_action :configure_permitted_parameters, if: :devise_controller?
   protected
   def configure_permitted_paramets
-    devise_parameters_sanitizer.for(:sign_up) << [:name, :password_confirmation]
-    devise_parameters_sanitizer.for(:sign_in) << [:email, :remember_me]
+    devise_parameters_sanitizer.permit(:sign_up, keys: [:name, :password_confirmation])
+    devise_parameters_sanitizer.permit(:sign_in, keys: [:email, :remember_me])
   end
 
   def render_404
