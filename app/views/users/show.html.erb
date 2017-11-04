@@ -1,0 +1,32 @@
+<%= render 'includes/cover', user: @user %>
+<br>
+<div class="row" id="user-<%= @user.id %>">
+  <div class="col-lg-3">
+    <%= render 'includes/user_info' %>
+  </div>
+  <div class="col-lg-6">
+    <div id="activities">
+      <% if @activities.empty? %>
+        <div class="well">
+          <%= render('includes/no_resources', resources: 'Activities') %>
+        </div>
+      <% else %>
+        <%= render_activities(@activities, layout: '/includes/activity') %>
+      <% end %>
+    </div>
+    <%= render 'includes/paginate', resources: @activities %>
+  </div>
+  <div class="col-lg-3">
+    <% if is_current_user(@user) %>
+      <div class="well">
+        <div class="nav nav-pills nav-stacked">
+          <li><%= link_to 'Edit Profile', edit_user_path(@user) %></li>
+          <li><%= link_to 'Change Password', edit_user_registration_path %></li>
+          <li><%= link_to 'Friends', friends_user_path(@user) %></li>
+          <li><%= link_to 'Followers', followers_user_path(@user) %></li>
+          <li><%= link_to 'Deactivate', deactivate_user_path(@user) %></li>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

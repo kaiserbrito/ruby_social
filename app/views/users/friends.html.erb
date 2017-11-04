@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-3">
+    <%= render 'includes/user_info' %>
+  </div>
+  <div class="col-lg-6 well">
+    <h3>Friends</h3>
+    <hr>
+    <div id="friends">
+      <%= render(@friends) || render('includes/no_resources', resources: 'Friends') %>
+    </div>
+    <%= render 'includes/paginate', resources: @friends %>
+  </div>
+  <div class="col-lg-3">
+    <%= render 'includes/links' %>
+  </div>
+</div>

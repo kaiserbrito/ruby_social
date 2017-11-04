@@ -1,0 +1,13 @@
+<br>
+<div class="row" id="user-<%= @user.id %>">
+  <div class="col-lg-8">
+    <%= render 'includes/avatar', user: user %>
+    <h5 class="name"><%= link_to user.name, user %></h5>
+  </div>
+  <div class="col-lg-4">
+    <div class="follow">
+      <%= render 'follows/form', user: user %>
+    </div>
+  </div>
+</div>
+<br>
