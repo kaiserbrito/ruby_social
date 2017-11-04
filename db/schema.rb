@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102175751) do
+ActiveRecord::Schema.define(version: 20171104133453) do
 
   create_table "activities", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "trackable_type"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20171102175751) do
     t.index ["commentable_id"], name: "index_comments_on_commentable_id"
     t.index ["commentable_type"], name: "index_comments_on_commentable_type"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "when"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "follows", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources events do
     collection do
       get :calendar
