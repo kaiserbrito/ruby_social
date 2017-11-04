@@ -1,32 +1,27 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="well">
+  <div id="mentionable-data" data-content="<%= mentionable_user_path(current_user) %>"></div>
+  <%= form_for @post, html: { class: 'post_form '} do |f| %>
+    <div class="form-group">
+      <h4>Update Status</h4>
+      <div id="post-content" contenteditable="true" class="editable form-control input-mentionable" placeholder="What's going on?"></div>
+      <%= f.hidden_field :content, value: @post.content, class: 'form-control input-mentionable', autofocus: true %>
     </div>
+    <div class="form-group hidden" id="img-preview">
+      <img src="" alt="Preview">
+    </div>
+    <div class="form-group hidden">
+      <%= f.file_field :attachment %>
+    </div>
+    <div class="form-group">
+      <a href="javascript:void(0);" class="pull-right btn btn-primary" id="post-attachment">
+        <%= fa_icon 'image' %>
+      </a>
+      <%= f.submit 'Post', class: 'btn btn-primary' %>
+    </div>
+    <% if @post.attachment.present? %>
+      <div class="attachment">
+        <%= image_tag @post.attachment %>
+      </div>
+    <% end %>
   <% end %>
-
-  <div class="field">
-    <%= form.label :attachment %>
-    <%= form.text_field :attachment, id: :post_attachment %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, id: :post_content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :post_user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
